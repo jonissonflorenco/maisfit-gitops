@@ -1,0 +1,15 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: maisfit-homolog
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: PathPrefix(`/maisfit`)
+      kind: Rule
+      services:
+        - name: nginx
+          port: 80
+      middlewares:
+        - name: maisfit-homolog-strip-prefix

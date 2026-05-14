@@ -1,0 +1,18 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: maisfit-dev
+
+resources:
+  - ../../base
+  - middleware.yaml
+  - ingressroute.yaml
+
+configMapGenerator:
+  - name: nginx-index
+    behavior: replace
+    literals:
+      - index.html=<!DOCTYPE html><html><head><meta charset="UTF-8"><title>maisfit</title></head><body style="font-family:Arial;text-align:center;margin-top:80px;"><h1>maisfit</h1><p>Aplicação provisionada via ArgoCD + GitOps.</p><p>Ambiente: dev</p></body></html>
+
+generatorOptions:
+  disableNameSuffixHash: true

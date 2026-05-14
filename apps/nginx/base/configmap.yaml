@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-index
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="UTF-8">
+      <title>maisfit</title>
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          background: #f4f4f5;
+          color: #111827;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100vh;
+          margin: 0;
+        }
+        .card {
+          background: white;
+          padding: 40px;
+          border-radius: 16px;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+          text-align: center;
+        }
+        h1 {
+          margin-bottom: 8px;
+        }
+      </style>
+    </head>
+    <body>
+      <div class="card">
+        <h1>maisfit</h1>
+        <p>Aplicação provisionada via ArgoCD + GitOps.</p>
+        <p>Ambiente: __ENVIRONMENT__</p>
+      </div>
+    </body>
+    </html>
